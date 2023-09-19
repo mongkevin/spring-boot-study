@@ -1,6 +1,8 @@
 package com.kibeom.springbootstudy.controller.api;
 
 import com.kibeom.springbootstudy.dto.APIDataResponse;
+import com.kibeom.springbootstudy.dto.AdminRequest;
+import com.kibeom.springbootstudy.dto.LoginRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

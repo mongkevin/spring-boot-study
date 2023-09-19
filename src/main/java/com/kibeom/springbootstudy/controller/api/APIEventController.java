@@ -1,14 +1,25 @@
 package com.kibeom.springbootstudy.controller.api;
 
+import com.kibeom.springbootstudy.constant.ErrorCode;
+import com.kibeom.springbootstudy.constant.EventStatus;
 import com.kibeom.springbootstudy.dto.APIDataResponse;
+import com.kibeom.springbootstudy.dto.APIErrorResponse;
+import com.kibeom.springbootstudy.dto.EventResponse;
+import com.kibeom.springbootstudy.exception.GeneralException;
+import com.sun.jdi.request.EventRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @RequestMapping("/api")
 @RestController
 public class APIEventController {
     @GetMapping("/events")
     public APIDataResponse<List<EventResponse>> getEvents() {
-        return APIDataResponse.of(List.of(EventResponse.of(
+        return APIDataResponse.of(List.of(new EventResponse(
                 1L,
                 "오후 운동",
                 EventStatus.OPENED,
@@ -32,7 +43,7 @@ public class APIEventController {
             return APIDataResponse.empty();
         }
 
-        return APIDataResponse.of(EventResponse.of(
+        return APIDataResponse.of(new EventResponse(
                 1L,
                 "오후 운동",
                 EventStatus.OPENED,
@@ -56,4 +67,5 @@ public class APIEventController {
     public APIDataResponse<Void> removeEvent(@PathVariable Long eventId) {
         return APIDataResponse.empty();
     }
+
 }

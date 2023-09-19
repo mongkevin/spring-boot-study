@@ -1,5 +1,9 @@
 package com.kibeom.springbootstudy.controller.api;
 
+import com.kibeom.springbootstudy.constant.PlaceType;
+import com.kibeom.springbootstudy.dto.APIDataResponse;
+import com.kibeom.springbootstudy.dto.PlaceRequest;
+import com.kibeom.springbootstudy.dto.PlaceResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +14,7 @@ import java.util.List;
 public class APIPlaceController {
     @GetMapping("/places")
     public APIDataResponse<List<PlaceResponse>> getPlaces() {
-        return APIDataResponse.of(List.of(PlaceResponse.of(
+        return APIDataResponse.of(List.of(new PlaceResponse(
                 PlaceType.COMMON,
                 "랄라배드민턴장",
                 "서울시 강남구 강남대로 1234",
@@ -32,7 +36,7 @@ public class APIPlaceController {
             return APIDataResponse.empty();
         }
 
-        return APIDataResponse.of(PlaceResponse.of(
+        return APIDataResponse.of(new PlaceResponse(
                 PlaceType.COMMON,
                 "랄라배드민턴장",
                 "서울시 강남구 강남대로 1234",
