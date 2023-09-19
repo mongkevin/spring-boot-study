@@ -6,6 +6,7 @@ import lombok.*;
 @Getter
 @ToString
 @EqualsAndHashCode
+//상속 받은 클래스에서만 쓰이게
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class APIErrorResponse {
 
@@ -13,10 +14,12 @@ public class APIErrorResponse {
     private final Integer errorCode;
     private final String message;
 
+    //수동 입력 에러코드
     public static APIErrorResponse of(Boolean success, Integer errorCode, String message) {
         return new APIErrorResponse(success, errorCode, message);
     }
 
+    //에러 코드 넣기
     public static APIErrorResponse of(Boolean success, ErrorCode errorCode) {
         return new APIErrorResponse(success, errorCode.getCode(), errorCode.getMessage());
     }

@@ -7,6 +7,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
+//APIErrorResponse도 같이 불러올수 있도록
 @EqualsAndHashCode(callSuper = true)
 public class APIDataResponse<T> extends APIErrorResponse {
 
